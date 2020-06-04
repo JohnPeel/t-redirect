@@ -17,4 +17,4 @@ COPY --from=builder /project/redirect/target/release/ ./
 USER rust
 EXPOSE 8000
 
-CMD ["./cfclicker.exe"]
+CMD ["./cfclicker"]
