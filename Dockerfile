@@ -12,9 +12,9 @@ FROM rust:slim
 
 RUN useradd rust
 WORKDIR "/project/redirect"
-COPY --from=builder /project/redirect/target/release/ ./
+COPY --from=builder /project/redirect/target/release/redirect ./
 
 USER rust
 EXPOSE 8000
 
-CMD ["./cfclicker"]
+CMD ["./redirect"]
