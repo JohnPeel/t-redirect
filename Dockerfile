@@ -1,4 +1,4 @@
-FROM rust:alpine as builder
+FROM rust:latest as builder
 
 WORKDIR "/project/redirect"
 RUN rustup default nightly && rustup update
@@ -8,7 +8,7 @@ RUN cargo fetch
 ENV ROCKET_ENV=production
 RUN cargo build --release
 
-FROM alpine
+FROM rust:slim
 
 RUN useradd rust
 WORKDIR "/project/redirect"
