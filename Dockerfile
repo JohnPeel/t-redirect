@@ -10,9 +10,10 @@ RUN cargo build --release
 
 FROM rust:slim
 
-RUN useradd rust && mkdir /project/redirect && chown rust:rust /project/redirect
+RUN useradd rust
 WORKDIR "/project/redirect"
-COPY --from=builder /project/redirect/target/release/redirect ./
+COPY --from=builder --chown=rust:rust /project/redirect/target/release/redirect ./
+RUN chown -R rust:rust .
 
 USER rust
 EXPOSE 8000
