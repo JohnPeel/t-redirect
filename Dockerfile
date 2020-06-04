@@ -3,8 +3,8 @@ FROM rust:alpine as builder
 WORKDIR "/project/redirect"
 RUN rustup default nightly && rustup update
 COPY Cargo.toml Cargo.toml
-RUN cargo fetch
 COPY src src
+RUN cargo fetch
 ENV ROCKET_ENV=production
 RUN cargo build --release
 
