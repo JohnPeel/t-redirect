@@ -10,7 +10,7 @@ RUN cargo build --release
 
 FROM rust:slim
 
-RUN useradd rust
+RUN useradd rust && mkdir /project/redirect && chown rust:rust /project/redirect
 WORKDIR "/project/redirect"
 COPY --from=builder /project/redirect/target/release/redirect ./
 
